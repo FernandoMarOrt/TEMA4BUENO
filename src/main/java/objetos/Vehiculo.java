@@ -6,7 +6,7 @@ package objetos;
 /*
 ¿Qué es un programa orientado a objetos?
 
-s un modelo de programación informática que organiza el diseño de software en
+es un modelo de programación informática que organiza el diseño de software en
 torno a datos u objetos, en lugar de funciones y lógica. Un objeto se puede
 definir como un campo de datos que tiene atributos y comportamiento únicos.
 
@@ -56,8 +56,7 @@ Son metodos para  recibir datos
 Son metodos para enviar datos
 
 ¿En qué consiste la instanciación de un objeto?
-Se llama instancia a todo objeto que derive de algún otro. De esta forma, todos
-los objetos son instancias de algún otro, menos la clase Object que es la madre de toda
+Crea un espacio de memoria donde este almacene el estado de su objeto
 
 ¿Para qué sirve el operador ‘new’?
 crear una instancia de un tipo de objeto definido por el usuario
