@@ -32,6 +32,14 @@ public class ejemplovehiculo {
         array[0].setBastidor("123A");
         System.out.println("------------------------------------------------");
         catalogo.mostrarCatalogo();
+        
+        int pos = catalogo.buscarVehiculo(v);
+        System.out.println("posicion " + pos);
+        
+        catalogo.borrarVehiculo(catalogo.getListaVehiculos()[4]);
+        System.out.println("----------------- DESPUES DE BORRAR ---------------------");
+        
+        catalogo.mostrarCatalogo();
 
     }
    

@@ -53,7 +53,13 @@ public class CatalogoVehiculos {
 
     public void borrarVehiculo(Vehiculo v) {
         
-
+        int pos = buscarVehiculo(v);
+        
+        if (pos >= 0) {
+            
+            this.listaVehiculos[pos] = null; //Es como borrarlo
+            
+        }
 
     }
 
