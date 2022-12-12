@@ -13,12 +13,13 @@ public class ejemplovehiculo {
     public static void main(String[] args) {
        Modelo aleatorio = Modelo.getAleatorio(); 
        
-        System.out.println("El modelo aleatorio de  es " + aleatorio.getModelo());
-        
-        
-        System.out.println("Color " + Color.getAleatorio());
-        
-        
+//       
+//        System.out.println("El modelo aleatorio de  es " + aleatorio.getModelo());
+//        
+//        
+//        System.out.println("Color " + Color.getAleatorio());
+//        
+//        
         
         
         Vehiculo v = new Vehiculo();
@@ -28,18 +29,44 @@ public class ejemplovehiculo {
         
         
         CatalogoVehiculos catalogo = new CatalogoVehiculos(10);
-        Vehiculo[] array = catalogo.getListaVehiculos();
-        array[0].setBastidor("123A");
-        System.out.println("------------------------------------------------");
-        catalogo.mostrarCatalogo();
+        System.out.println("Vehiculos del catalogo " + catalogo.getNumeroVehiculos());
+        System.out.println(catalogo);
         
-        int pos = catalogo.buscarVehiculo(v);
-        System.out.println("posicion " + pos);
+        System.out.println("-------------------------------------------------- DESPUES");
         
-        catalogo.borrarVehiculo(catalogo.getListaVehiculos()[4]);
-        System.out.println("----------------- DESPUES DE BORRAR ---------------------");
         
-        catalogo.mostrarCatalogo();
+        Vehiculo aux = new Vehiculo();
+        catalogo.borrarVehiculo(aux);
+        aux.setBastidor("1234");
+        catalogo.añadirVehiculo(aux);
+        
+        System.out.println("Vehiculos del catalogo " + catalogo.getNumeroVehiculos());
+        System.out.println(catalogo);
+        
+        
+        aux.setBastidor("12345");
+        
+        catalogo.añadirVehiculo(aux);
+        
+        System.out.println("DESPUES DE AÑADIR");
+        System.out.println(" numero" + catalogo.getNumeroVehiculos());
+        System.out.println(catalogo);
+        
+        
+ 
+        
+//        Vehiculo[] array = catalogo.getListaVehiculos();
+//        array[0].setBastidor("123A");
+//        System.out.println("------------------------------------------------");
+//        catalogo.mostrarCatalogo();
+//        
+//        int pos = catalogo.buscarVehiculo(v);
+//        System.out.println("posicion " + pos);
+//        
+//        catalogo.borrarVehiculo(catalogo.getListaVehiculos()[4]);
+//        System.out.println("----------------- DESPUES DE BORRAR ---------------------");
+//        
+//        catalogo.mostrarCatalogo();
 
     }
    

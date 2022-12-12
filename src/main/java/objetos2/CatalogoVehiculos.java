@@ -4,6 +4,8 @@
  */
 package objetos2;
 
+import java.util.Arrays;
+
 /**
  *
  * @author fer
@@ -18,9 +20,9 @@ public class CatalogoVehiculos {
     // de datos con vehiculos aleatorios
     public CatalogoVehiculos(int tamanio) {
 
-        tamanio = Math.abs(tamanio);
+        tamanio = Math.abs(tamanio); //el tamaño dle constructor
 
-        this.numeroVehiculos = tamanio;
+        this.numeroVehiculos = tamanio; //va a ser el numeor de vehiculo
 
         this.listaVehiculos = new Vehiculo[tamanio];
 
@@ -33,17 +35,75 @@ public class CatalogoVehiculos {
 
     }
 
-    public void mostrarCatalogo() {
+//    public void mostrarCatalogo() {
+//
+//        for (Vehiculo v : listaVehiculos) {
+//
+//            System.out.println(v);
+////
+////        }
+//
+//    }
+    public String toString() {
+
+        String tmp = "";
 
         for (Vehiculo v : listaVehiculos) {
+            
+            if (v != null) {
+                
+                tmp += v.toString() + "\n";
 
-            System.out.println(v);
-
+            }
         }
 
+        return tmp;
     }
+    
+    
+    
+    
+    
+    public void añadirVehiculo(Vehiculo v) {
+        
+        //Si hay hueco se inserta en el hueco
+        if(this.numeroVehiculos < this.listaVehiculos.length) {
+            
+            for (int i = 0; i < this.listaVehiculos.length; i++) {
+                
+                
+                if(this.listaVehiculos[i] ==  null){
+                    
+                    this.listaVehiculos[i] = v;
+                    this.numeroVehiculos++;
+                    
+                    System.out.println("GUARDANDO VEHICULOS EN POSICION" + i) ;
+                    break;
+                    
+                } 
+                
+                
+            }
+            
+        } else { //SI NO , METO UN ESPACIO MAS 
+            
+            this.numeroVehiculos++;//SUMA UN ESPACIO AL CATALOGO
+            
+            this.listaVehiculos = Arrays.copyOf(listaVehiculos, this.numeroVehiculos); 
+//          this.listaVehiculos = Arrays.copyOf(listaVehiculos, this.numeroVehiculos*2); //ARRAY NUEVO CON EL DOBLE DE ESPACIOS QUE EL ANTERIOR
 
-    public int getNumeroVehiculos() {
+            this.listaVehiculos[this.numeroVehiculos-1] = v;
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+
+    public int getNumeroVehiculos() { //me dice el numero de vehiculos que hay en el catalogo NO EL TAMAÑO
         return numeroVehiculos;
     }
 
@@ -51,34 +111,49 @@ public class CatalogoVehiculos {
         return listaVehiculos;
     }
 
-    public void borrarVehiculo(Vehiculo v) {
-        
+//    public void borrarVehiculo(Vehiculo v) {
+//
+//        int pos = buscarVehiculo(v);
+//
+//        if (pos >= 0) {
+//
+//            this.listaVehiculos[pos] = null; //Es como borrarlo
+//
+//        }
+//
+//    }
+    public boolean borrarVehiculo(Vehiculo v) {
+
         int pos = buscarVehiculo(v);
-        
+
         if (pos >= 0) {
-            
+
             this.listaVehiculos[pos] = null; //Es como borrarlo
-            
+            this.numeroVehiculos--;
+            return true; //SI encuentra y borra el vehiculo existosamente devuelve true
         }
+
+        return false; //Si no consigue borrarlo devuelve false
 
     }
 
+    //ESTO ES UNA BUSQUEDA SECUENCIAL
     public int buscarVehiculo(Vehiculo v) {
-        
-        
+
         for (int i = 0; i < this.listaVehiculos.length; i++) {
-            
-            if(v.equals(this.listaVehiculos[i])){
-                
+
+            //MIRA SI EL VEHICULO QUE LE PASO ES IGUAL A UNO DEL ARRAY
+            //LE PUSIMOS QUE MIRE EL BASTIDOR
+            if (v.equals(this.listaVehiculos[i])) {
+
                 return i;
             }
-            
+
         }
-            
-        
-        
-        return-1;
+
+        return -1;
 
     }
+    
 
 }
