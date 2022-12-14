@@ -155,5 +155,15 @@ public class CatalogoVehiculos {
 
     }
     
+    
+    public Vehiculo buscarVehiculo(String bastidor){
+        
+        Vehiculo aux = new Vehiculo();
+        aux.setBastidor(bastidor);
+        int posicion = buscarVehiculo(aux);
+        return (posicion>=0) ? this.listaVehiculos[posicion]:null; //Si la posicion es menor que 0 devolvera false
+        
+    }
+    
 
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author fer
+ * @author Fer
  */
 public class CatalogoClientes {
 
@@ -92,7 +92,14 @@ public class CatalogoClientes {
     }
     
     
-    
+    public Clientes buscarCliente(String nif){
+        
+        Clientes aux = new Clientes();
+        aux.setNif(nif);
+        int posicion = buscarClientes(aux);
+        return (posicion>=0)?this.listaClientes[posicion]:null; //Si la posicion es menor que 0 devolvera false
+        
+    }
     
 
     public int getNumeroClientes() { //me dice el numero de clientes que hay en el catalogo NO EL TAMAÑO
@@ -107,7 +114,7 @@ public class CatalogoClientes {
     public boolean borrarclientes(Clientes c) {
 
         int pos = buscarClientes(c);
-
+        
         if (pos >= 0) {
 
             this.listaClientes[pos] = null; //Es como borrarlo
@@ -120,17 +127,24 @@ public class CatalogoClientes {
     }
 
     //ESTO ES UNA BUSQUEDA SECUENCIAL
-    public int buscarClientes(Clientes c) {
+    private int buscarClientes(Clientes c) {
 
-        for (int i = 0; i < this.listaClientes.length; i++) {
+        
+        
+        if (c != null) {
+            
+        
+            for (int i = 0; i < this.listaClientes.length; i++) {
 
-            //MIRA SI EL CLIENTE QUE LE PASO ES IGUAL A UNO DEL ARRAY
-            //LE PUSIMOS QUE MIRE EL BASTIDOR
-            if (c.equals(this.listaClientes[i])) {
+                //MIRA SI EL CLIENTE QUE LE PASO ES IGUAL A UNO DEL ARRAY
+                //LE PUSIMOS QUE MIRE EL BASTIDOR
 
-                return i;
+                if (this.listaClientes[i] != null && c.equals(this.listaClientes[i])) {
+
+                    return i;
+                }
+
             }
-
         }
 
         return -1;
