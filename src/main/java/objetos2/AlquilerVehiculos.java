@@ -30,6 +30,12 @@ public class AlquilerVehiculos {
         Alquiler a = new Alquiler(c, v, LocalDate.now(), 8);
         
         System.out.println(a);
+        
+        CatalogoAlquileres ca = new CatalogoAlquileres(10);
+        ca.añadirAlquiler(a);
+        
+        System.out.println("Lista de alquileres ");
+        System.out.println(ca);
 
     }
 

@@ -22,7 +22,7 @@ public class CatalogoAlquileres {
 
         tamanio = Math.abs(tamanio); //el tamaño dle constructor
 
-        this.numeroAlquileres = tamanio; //va a ser el numeor de vehiculo
+        this.numeroAlquileres = 0; //va a ser el numeor de vehiculo
 
         this.listaAlquileres = new Alquiler[tamanio];
 
