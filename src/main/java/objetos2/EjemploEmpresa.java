@@ -10,4 +10,21 @@ package objetos2;
  */
 public class EjemploEmpresa {
     
+    public static void main(String[] args) {
+        
+        Empresa empresaPrueba = new Empresa();
+        
+        Clientes c1 = new Clientes();
+        Vehiculo v1 = new Vehiculo();
+        
+        empresaPrueba.registrarCliente(c1);
+        empresaPrueba.registrarVehiculo(v1);
+        
+        System.out.println(empresaPrueba);
+        
+        empresaPrueba.buscarCliente(c1);
+        empresaPrueba.buscarVehiculo(v1);
+        
+    }
+    
 }

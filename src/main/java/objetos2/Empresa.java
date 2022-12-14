@@ -20,13 +20,13 @@ public class Empresa {
     private CatalogoClientes CatalogoC;
     private CatalogoVehiculos VehiculoV;
 
-    public Empresa(String cif, String nombre, CatalogoAlquileres CatalagoA, CatalogoClientes CatalogoC, CatalogoVehiculos VehiculoV) {
+    public Empresa() {
         this.cif =  RandomStringUtils.randomAlphabetic(1) + RandomStringUtils.randomNumeric(7) + RandomStringUtils.randomAlphabetic(1);
         this.nombre = RandomStringUtils.randomAlphabetic(5);
-        this.CatalagoA = CatalagoA;
-        this.CatalogoC = CatalogoC;
-        this.VehiculoV = VehiculoV;
-    }
+        this.CatalagoA = new CatalogoAlquileres(10);
+        this.CatalogoC = new CatalogoClientes(10);
+        this.VehiculoV = new CatalogoVehiculos(10);
+    }   
 
     
 
@@ -60,8 +60,12 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa{" + "cif=" + cif + ", nombre=" + nombre + ", CatalagoA=" + CatalagoA + ", CatalogoC=" + CatalogoC + ", VehiculoV=" + VehiculoV + '}';
+        return "Empresa{" + "cif=" + cif + ", nombre=" + nombre + "\n" + ", CatalagoA=" + CatalagoA + "\n" + ", CatalogoC=" + CatalogoC + ", VehiculoV=" + VehiculoV + '}';
     }
+
+    
+
+   
 
     @Override
     public int hashCode() {
@@ -87,7 +91,23 @@ public class Empresa {
     
     
     
+     public void registrarCliente(Clientes c) {
+        this.CatalogoC.añadirClientes(c);
+    }
+
     
+    public void buscarCliente(Clientes c) {
+         this.CatalogoC.buscarCliente(c.getNif());
+    }
+
+    
+    public void registrarVehiculo(Vehiculo v) {
+        this.VehiculoV.añadirVehiculo(v);
+    }
+
+    public void buscarVehiculo(Vehiculo v) {
+        this.VehiculoV.buscarVehiculo(v.getBastidor());
+    }
     
     
     
