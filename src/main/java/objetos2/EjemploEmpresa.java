@@ -20,10 +20,16 @@ public class EjemploEmpresa {
         empresaPrueba.registrarCliente(c1);
         empresaPrueba.registrarVehiculo(v1);
         
-        System.out.println(empresaPrueba);
-        
-        empresaPrueba.buscarCliente(c1);
-        empresaPrueba.buscarVehiculo(v1);
+//        System.out.println(empresaPrueba);
+//        
+//        empresaPrueba.buscarCliente(c1);
+//        
+////        System.out.println("El cliente esta en la posicion: " + posicion);
+//        
+//        
+//        empresaPrueba.buscarVehiculo(v1);
+//        
+        System.out.println("aaa" + v1.isDisponible());
         
     }
     

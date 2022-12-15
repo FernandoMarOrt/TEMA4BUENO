@@ -4,6 +4,7 @@
  */
 package objetos2;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -12,23 +13,21 @@ import org.apache.commons.lang3.RandomStringUtils;
  * @author fer
  */
 public class Empresa {
-    
+
     private String cif;
     private String nombre;
-    
+
     private CatalogoAlquileres CatalagoA;
     private CatalogoClientes CatalogoC;
     private CatalogoVehiculos VehiculoV;
 
     public Empresa() {
-        this.cif =  RandomStringUtils.randomAlphabetic(1) + RandomStringUtils.randomNumeric(7) + RandomStringUtils.randomAlphabetic(1);
+        this.cif = RandomStringUtils.randomAlphabetic(1) + RandomStringUtils.randomNumeric(7) + RandomStringUtils.randomAlphabetic(1);
         this.nombre = RandomStringUtils.randomAlphabetic(5);
         this.CatalagoA = new CatalogoAlquileres(10);
         this.CatalogoC = new CatalogoClientes(10);
         this.VehiculoV = new CatalogoVehiculos(10);
-    }   
-
-    
+    }
 
     public String getCif() {
         return cif;
@@ -63,10 +62,6 @@ public class Empresa {
         return "Empresa{" + "cif=" + cif + ", nombre=" + nombre + "\n" + ", CatalagoA=" + CatalagoA + "\n" + ", CatalogoC=" + CatalogoC + ", VehiculoV=" + VehiculoV + '}';
     }
 
-    
-
-   
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -88,19 +83,15 @@ public class Empresa {
         final Empresa other = (Empresa) obj;
         return Objects.equals(this.cif, other.cif);
     }
-    
-    
-    
-     public void registrarCliente(Clientes c) {
+
+    public void registrarCliente(Clientes c) {
         this.CatalogoC.añadirClientes(c);
     }
 
-    
     public void buscarCliente(Clientes c) {
-         this.CatalogoC.buscarCliente(c.getNif());
+        this.CatalogoC.buscarCliente(c.getNif());
     }
 
-    
     public void registrarVehiculo(Vehiculo v) {
         this.VehiculoV.añadirVehiculo(v);
     }
@@ -108,8 +99,39 @@ public class Empresa {
     public void buscarVehiculo(Vehiculo v) {
         this.VehiculoV.buscarVehiculo(v.getBastidor());
     }
+
+    
+    
+    
+    //METODO QUE BUSCAR UN VEHICULO Y SI EXISTE EL CLIENTE O 
+    public void alquilarVehiculo(Vehiculo v, Clientes c, LocalDate fecha, int dias) {
+
+        if (this.VehiculoV.buscarVehiculo(v.getBastidor()) != null && this.CatalogoC.buscarCliente(c.getNif()) != null && v.isDisponible() != true) {
+
+            Alquiler alqui1 = new Alquiler(c, v, fecha, dias);
+            
+            v.setDisponible(true);
+            
+
+        }
+        
+        
+
+
+    }
+    //buscar cliente a ver si esta---
+    //ver el vehiculo a ve rsi esta---
+    // y si el vehiculo esta disponible---
+    //Si se cumplen creamos un objeto de tipo alquiler y pasamos los datos que se necesiten --
+    //pasar bastidor------ 
+    //En el momento que pasa esto pasara el coche a estar no dispnible
+
     
     
     
     
+    
+    
+    //Recibir vehiculo de un alquiler
+    //Busca el alquiler en la lista y pone el vehiculo en la lista
 }
