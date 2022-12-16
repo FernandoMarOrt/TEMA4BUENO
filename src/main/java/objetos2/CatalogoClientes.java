@@ -5,6 +5,7 @@
 package objetos2;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -35,15 +36,14 @@ public class CatalogoClientes {
 
     }
 
-
     public String toString() {
 
         String tmp = "";
 
         for (Clientes c : listaClientes) {
-            
+
             if (c != null) {
-                
+
                 tmp += c.toString() + "\n";
 
             }
@@ -51,56 +51,47 @@ public class CatalogoClientes {
 
         return tmp;
     }
-    
-    
-    
-    
-    
+
     public void añadirClientes(Clientes c) {
-        
+
         //Si hay hueco se inserta en el hueco
-        if(this.numeroClientes < this.listaClientes.length) {
-            
+        if (this.numeroClientes < this.listaClientes.length) {
+
             for (int i = 0; i < this.listaClientes.length; i++) {
-                
-                
-                if(this.listaClientes[i] ==  null){
-                    
+
+                if (this.listaClientes[i] == null) {
+
                     this.listaClientes[i] = c;
                     this.numeroClientes++;
-                    
-                    System.out.println("Guardando clientes en la posicion" + i) ;
+
+                    System.out.println("Guardando clientes en la posicion" + i);
                     break;
-                    
-                } 
-                
-                
+
+                }
+
             }
-            
+
         } else { //SI NO , METO UN ESPACIO MAS 
-            
+
             this.numeroClientes++;//SUMA UN ESPACIO AL CATALOGO
-            
-            this.listaClientes = Arrays.copyOf(listaClientes, this.numeroClientes); 
+
+            this.listaClientes = Arrays.copyOf(listaClientes, this.numeroClientes);
 //          this.listaVehiculos = Arrays.copyOf(listaClientes, this.numeroClientes*2); //ARRAY NUEVO CON EL DOBLE DE ESPACIOS QUE EL ANTERIOR
 
-            this.listaClientes[this.numeroClientes-1] = c;
-            
+            this.listaClientes[this.numeroClientes - 1] = c;
+
         }
-        
-        
+
     }
-    
-    
-    public Clientes buscarCliente(String nif){
-        
+
+    public Clientes buscarCliente(String nif) {
+
         Clientes aux = new Clientes();
         aux.setNif(nif);
         int posicion = buscarClientes(aux);
-        return (posicion>=0)?this.listaClientes[posicion]:null; //Si la posicion es menor que 0 devolvera false
-        
+        return (posicion >= 0) ? this.listaClientes[posicion] : null; //Si la posicion es menor que 0 devolvera false
+
     }
-    
 
     public int getNumeroClientes() { //me dice el numero de clientes que hay en el catalogo NO EL TAMAÑO
         return numeroClientes;
@@ -110,11 +101,10 @@ public class CatalogoClientes {
         return listaClientes;
     }
 
-
     public boolean borrarclientes(Clientes c) {
 
         int pos = buscarClientes(c);
-        
+
         if (pos >= 0) {
 
             this.listaClientes[pos] = null; //Es como borrarlo
@@ -129,16 +119,12 @@ public class CatalogoClientes {
     //ESTO ES UNA BUSQUEDA SECUENCIAL
     private int buscarClientes(Clientes c) {
 
-        
-        
         if (c != null) {
-            
-        
+
             for (int i = 0; i < this.listaClientes.length; i++) {
 
                 //MIRA SI EL CLIENTE QUE LE PASO ES IGUAL A UNO DEL ARRAY
                 //LE PUSIMOS QUE MIRE EL BASTIDOR
-
                 if (this.listaClientes[i] != null && c.equals(this.listaClientes[i])) {
 
                     return i;
@@ -150,6 +136,28 @@ public class CatalogoClientes {
         return -1;
 
     }
-    
+
+    public static Clientes clienteConDatos() {
+
+        Scanner teclado = new Scanner(System.in);
+        
+        
+        
+        System.out.println("Dime el nif del cliente");
+        
+        String nif2 = teclado.nextLine();
+        
+        System.out.println("Dime el nombre del cliente");
+        
+        String nombre2 = teclado.nextLine();
+        
+        System.out.println("Dime el apellido del cliente");
+        
+        String apellido2 = teclado.nextLine();
+        
+        Clientes c = new Clientes(nombre2, apellido2, nif2);
+        
+        return c;
+    }
 
 }

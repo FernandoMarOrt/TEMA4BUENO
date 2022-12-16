@@ -91,6 +91,11 @@ public class Empresa {
     public void buscarCliente(Clientes c) {
         this.CatalogoC.buscarCliente(c.getNif());
     }
+    
+    public void buscarAlquiler(Alquiler a) {
+        this.CatalagoA.buscarAlquiler(a.getAlquilerID());
+        
+    }
 
     public void registrarVehiculo(Vehiculo v) {
         this.VehiculoV.añadirVehiculo(v);
@@ -100,7 +105,7 @@ public class Empresa {
         this.VehiculoV.buscarVehiculo(v.getBastidor());
     }
 
-    //METODO QUE BUSCAR UN VEHICULO Y SI EXISTE EL CLIENTE O 
+    //METODO QUE BUSCAR UN VEHICULO Y SI EXISTE EL CLIENTE 
     public void alquilarVehiculo(Vehiculo v, Clientes c, LocalDate fecha, int dias) {
 
         if (this.VehiculoV.buscarVehiculo(v.getBastidor()) != null && this.CatalogoC.buscarCliente(c.getNif()) != null && v.isDisponible() != true) {
@@ -108,20 +113,21 @@ public class Empresa {
             Alquiler alqui1 = new Alquiler(c, v, fecha, dias);
 
             v.setDisponible(true);
+            
+            this.CatalagoA.añadirAlquiler(alqui1);
 
         }
 
     }
-    //buscar cliente a ver si esta---
-    //ver el vehiculo a ve rsi esta---
-    // y si el vehiculo esta disponible---
-    //Si se cumplen creamos un objeto de tipo alquiler y pasamos los datos que se necesiten --
-    //pasar bastidor------ 
-    //En el momento que pasa esto pasara el coche a estar no dispnible
-
+    
+    
     public void recibirAlquiler(Alquiler a) {
         
-        
+        if (this.CatalagoA.buscarAlquiler(a.getAlquilerID()) != null) {
+            
+            a.getVehiculo().setDisponible(false);
+            
+        }
 
     }
 

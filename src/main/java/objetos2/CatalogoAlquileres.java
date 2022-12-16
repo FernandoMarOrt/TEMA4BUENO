@@ -5,6 +5,7 @@
 package objetos2;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -97,13 +98,15 @@ public class CatalogoAlquileres {
     }
     
 
-    public int getNumeroClientes() { //me dice el numero de clientes que hay en el catalogo NO EL TAMAÑO
+    public int getNumeroAlquileres() { //me dice el numero de clientes que hay en el catalogo NO EL TAMAÑO
         return numeroAlquileres;
     }
 
-    public Alquiler[] getListaClientes() {
+    public Alquiler[] getListaAlquileres() {
         return listaAlquileres;
     }
+    
+    
 
 
     public boolean borrarAlquiler(Alquiler a) {
@@ -144,6 +147,29 @@ public class CatalogoAlquileres {
 
         return -1;
 
+    }
+    
+    public static Clientes clienteConDatos() {
+
+        Scanner teclado = new Scanner(System.in);
+        
+        
+        
+        System.out.println("Dime el nif del cliente");
+        
+        String nif2 = teclado.nextLine();
+        
+        System.out.println("Dime el nombre del cliente");
+        
+        String nombre2 = teclado.nextLine();
+        
+        System.out.println("Dime el apellido del cliente");
+        
+        String apellido2 = teclado.nextLine();
+        
+        Clientes c = new Clientes(nombre2, apellido2, nif2);
+        
+        return c;
     }
     
 

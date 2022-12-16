@@ -17,6 +17,8 @@ public class Menu {
 
         int opcion = 0;
         boolean repetir = false;
+        
+         Empresa empresa1 = new Empresa();
 
         Scanner teclado = new Scanner(System.in);
 
@@ -28,11 +30,10 @@ public class Menu {
 
                     System.out.println("""
                            Selecciona una de estas opciones por favor:
-                           1.
-                           2.
-                           3.
-                           4.
-                           5.
+                           1.Dar de alta a clientes
+                           2.Dar de alta a vehiculos 
+                           3.Realizar alquiler
+                           0.Salir
                            """);
 
                     opcion = teclado.nextInt();
@@ -49,6 +50,9 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Ha elegido dar de alta un cliente");
+                    
+                    
 
                     break;
                 case 2:

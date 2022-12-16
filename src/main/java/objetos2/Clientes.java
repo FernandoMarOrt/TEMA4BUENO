@@ -17,6 +17,10 @@ public class Clientes {
     private ApellidosClientes apellido;
     private String nif;
     private static int contador = 0;
+    
+    private String nombre2;
+    private String apellido2;
+    private String nif2;
 
     public Clientes() {
         
@@ -27,6 +31,17 @@ public class Clientes {
 //        this.nif = RandomStringUtils.randomNumeric(8) + RandomStringUtils.randomAlphabetic(1);
         
     }
+
+    public Clientes(String nombre2, String apellido2, String nif2) {
+        this.nombre2 = nombre2;
+        this.apellido2 = apellido2;
+        this.nif2 = nif2;
+    }
+
+   
+    
+    
+    
 
 
     public NombresClientes getNombre() {
