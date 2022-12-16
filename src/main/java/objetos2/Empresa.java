@@ -100,23 +100,16 @@ public class Empresa {
         this.VehiculoV.buscarVehiculo(v.getBastidor());
     }
 
-    
-    
-    
     //METODO QUE BUSCAR UN VEHICULO Y SI EXISTE EL CLIENTE O 
     public void alquilarVehiculo(Vehiculo v, Clientes c, LocalDate fecha, int dias) {
 
         if (this.VehiculoV.buscarVehiculo(v.getBastidor()) != null && this.CatalogoC.buscarCliente(c.getNif()) != null && v.isDisponible() != true) {
 
             Alquiler alqui1 = new Alquiler(c, v, fecha, dias);
-            
+
             v.setDisponible(true);
-            
 
         }
-        
-        
-
 
     }
     //buscar cliente a ver si esta---
@@ -126,12 +119,12 @@ public class Empresa {
     //pasar bastidor------ 
     //En el momento que pasa esto pasara el coche a estar no dispnible
 
-    
-    
-    
-    
-    
-    
+    public void recibirAlquiler(Alquiler a) {
+        
+        
+
+    }
+
     //Recibir vehiculo de un alquiler
     //Busca el alquiler en la lista y pone el vehiculo en la lista
 }
